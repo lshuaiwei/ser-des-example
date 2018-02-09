@@ -1,0 +1,14 @@
+syntax = "proto3";
+
+enum Type {
+ TRANSACTION = 0;
+ EVENT = 1;
+}
+
+message MyMessage {
+ int32 id = 1;
+ Type type = 2;
+ int64 timestamp = 3;
+ map<string,string> tags = 4;
+ repeated MyMessage children = 5;
+}

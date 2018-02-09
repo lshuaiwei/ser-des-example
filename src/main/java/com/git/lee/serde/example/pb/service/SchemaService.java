@@ -35,6 +35,13 @@ public class SchemaService {
     private final static String PB_TEMP_DIRECTORY = "pb_temp_directory";
     private Map<Long, List<String>> msgTypeOfChannel = new HashMap<>();
 
+    /**
+     * 解析proto
+     * @param messageId Message的ID
+     * @param input proto文件内容
+     * @return 对应的schema
+     * @throws Exception
+     */
     public DynamicSchema parseProto(long messageId, String input) throws Exception {
         DynamicSchema schema = null;
         if (input != null) {
@@ -61,6 +68,13 @@ public class SchemaService {
         return schema;
     }
 
+    /**
+     * 根据schema获取对应的数据结构（Message）
+     * @param schema
+     * @param messageId
+     * @return
+     * @throws Exception
+     */
     public Map<String, Map<String, Object>> parseSchema(DynamicSchema schema, long messageId) throws Exception {
         Map<String, Map<String, Object>> fieldMap = new LinkedHashMap<>();
         List<String> msgTypeNames = msgTypeOfChannel.get(messageId);

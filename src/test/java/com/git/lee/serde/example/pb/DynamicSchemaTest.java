@@ -27,7 +27,7 @@ public class DynamicSchemaTest {
         DynamicSchema schema = schemaService.parseProto(messageId, protoContent());
         Assert.assertTrue(schema.getMessageTypes().contains("MyMessage"));
         System.out.println(schema);
-        
+
         Map<String, Map<String, Object>> messageDesc = schemaService.parseSchema(schema, messageId);
         Map<String, Object> fieldDesc = messageDesc.get("MyMessage");
         Assert.assertEquals(fieldDesc.get("id"), Integer.class);
